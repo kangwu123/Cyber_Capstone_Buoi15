@@ -7,3 +7,60 @@ generator client {
 datasource db {
   provider = "mysql"
 }
+
+model comments {
+  comment_id Int       @id @default(autoincrement())
+  user_id    Int?
+  image_id   Int?
+  content    String    @db.Text
+  created_at DateTime? @default(now()) @db.Timestamp(0)
+  users      users?    @relation(fields: [user_id], references: [id], onUpdate: NoAction, map: "comments_ibfk_1")
+  image      image?    @relation(fields: [image_id], references: [image_id], onDelete: Cascade, onUpdate: NoAction, map: "comments_ibfk_2")
+
+  @@index([image_id], map: "idx_image_comment")
+  @@index([user_id], map: "user_id")
+}
+
+model image {
+  image_id     Int            @id @default(autoincrement())
+  image_name   String         @db.VarChar(255)
+  path         String         @db.VarChar(255)
+  description  String?        @db.Text
+  user_id      Int?
+  created_at   DateTime?      @default(now()) @db.Timestamp(0)
+  comments     comments[]
+  users        users?         @relation(fields: [user_id], references: [id], onUpdate: NoAction, map: "image_ibfk_1")
+  saved_images saved_images[]
+
+  @@index([image_name], map: "idx_image_name")
+  @@index([user_id], map: "user_id")
+}
+
+model saved_images {
+  user_id  Int
+  image_id Int
+  saved_at DateTime? @default(now()) @db.Timestamp(0)
+  users    users     @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "saved_images_ibfk_1")
+  image    image     @relation(fields: [image_id], references: [image_id], onDelete: Cascade, onUpdate: NoAction, map: "saved_images_ibfk_2")
+
+  @@id([user_id, image_id])
+  @@index([image_id], map: "idx_image_saved")
+}
+
+model users {
+  id           Int            @id @default(autoincrement())
+  email        String         @unique(map: "email") @db.VarChar(255)
+  fullName     String?        @db.VarChar(255)
+  avatar       String?        @db.VarChar(255)
+  password     String?        @db.VarChar(255)
+  facebookId   String?        @unique(map: "facebookId") @db.VarChar(255)
+  googleId     String?        @unique(map: "googleId") @db.VarChar(255)
+  deletedBy    Int            @default(0)
+  isDeleted    Boolean        @default(false)
+  deletedAt    DateTime?      @db.Timestamp(0)
+  createdAt    DateTime       @default(now()) @db.Timestamp(0)
+  updatedAt    DateTime       @default(now()) @db.Timestamp(0)
+  comments     comments[]
+  image        image[]
+  saved_images saved_images[]
+}
