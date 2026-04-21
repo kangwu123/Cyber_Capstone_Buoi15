@@ -45,7 +45,7 @@ export class SavedImagesService {
       data: {
         user_id: userId,
         image_id: dto.image_id,
-        created_at: new Date(),
+        saved_at: new Date(),
       },
     });
 

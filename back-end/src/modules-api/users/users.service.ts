@@ -29,15 +29,13 @@ export class UsersService {
     const user = await this.prisma.users.update({
       where: { id: userId },
       data: {
-        fullname: dto.fullname,
-        age: dto.age,
+        fullName: dto.fullname,
         avatar: dto.avatar,
       },
       select: {
         user_id: true,
         email: true,
-        fullname: true,
-        age: true,
+        fullName: true,
         avatar: true,
       },
     });
@@ -54,8 +52,7 @@ export class UsersService {
             users: {
               select: {
                 user_id: true,
-                fullname: true,
-                age: true,
+                fullName: true,
                 avatar: true,
               },
             },

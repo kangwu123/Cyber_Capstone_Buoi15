@@ -11,7 +11,7 @@ async function bootstrap() {
   app.enableCors();
   const config = new DocumentBuilder()
     .setTitle('Cyber CAPSTONE')
-    .setDescription('buoi 15 Image Printerest')
+    .setDescription('Buoi 15 Image Printerest')
     .setVersion('1.0')
     .addTag('image-printerest')
     .build();

@@ -31,14 +31,13 @@ export class AuthService {
       data: {
         email: dto.email,
         password: hashedPassword,
-        fullname: dto.fullname,
-        age: dto.age ?? null,
+        fullName: dto.fullname,
         avatar: dto.avatar ?? null,
       },
       select: {
         user_id: true,
         email: true,
-        fullname: true,
+        fullName: true,
         age: true,
         avatar: true,
       },
