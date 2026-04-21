@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PrismaModule } from './modules-system/prisma/prisma.module';
+import { PrismaModule } from './modules-system/prisma.module';
 import { AuthModule } from './modules-api/auth/auth.module';
 import { UsersModule } from './modules-api/users/users.module';
 import { ImagesModule } from './modules-api/images/images.module';
@@ -19,8 +19,8 @@ import { join } from 'path';
     CommentsModule,
     SavedImagesModule,
     ServeStaticModule.forRoot({
-      rootPath: join(process.cwd(), 'uploads'),
-      serveRoot: '/uploads',
+      rootPath: join(process.cwd(), 'images'),
+      serveRoot: '/images',
     }),
   ],
   controllers: [AppController],
