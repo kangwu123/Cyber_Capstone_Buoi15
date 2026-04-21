@@ -19,8 +19,8 @@ export class ImagesService {
                 include: {
                     users: {
                         select: {
-                            user_id: true,
-                            fullname: true,
+                            id: true,
+                            fullName: true,
                             avatar: true,
                         },
                     },
@@ -56,8 +56,8 @@ export class ImagesService {
                 include: {
                     users: {
                         select: {
-                            user_id: true,
-                            fullname: true,
+                            id: true,
+                            fullName: true,
                             avatar: true,
                         },
                     },
@@ -92,9 +92,9 @@ export class ImagesService {
             include: {
                 users: {
                     select: {
-                        user_id: true,
+                        id: true,
                         email: true,
-                        fullname: true,
+                        fullName: true,
                         avatar: true,
                     },
                 },
@@ -108,7 +108,7 @@ export class ImagesService {
         return image;
     }
 
-    async createImage(userId: number, dto: CreateImageDto, file: Express.Multer.File) {
+    async createImage(userId: number, dto: CreateImageDto, file: Multer.File) {
         const path = `/images/${file.filename}`;
 
         const image = await this.prisma.image.create({
@@ -121,8 +121,8 @@ export class ImagesService {
             include: {
                 users: {
                     select: {
-                        user_id: true,
-                        fullname: true,
+                        id: true,
+                        fullName: true,
                         avatar: true,
                     },
                 },

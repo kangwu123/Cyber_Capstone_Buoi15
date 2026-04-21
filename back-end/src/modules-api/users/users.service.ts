@@ -10,10 +10,9 @@ export class UsersService {
     const user = await this.prisma.users.findUnique({
       where: { id: userId },
       select: {
-        user_id: true,
+        id: true,
         email: true,
-        fullname: true,
-        age: true,
+        fullName: true,
         avatar: true,
       },
     });
@@ -33,7 +32,7 @@ export class UsersService {
         avatar: dto.avatar,
       },
       select: {
-        user_id: true,
+        id: true,
         email: true,
         fullName: true,
         avatar: true,
@@ -51,7 +50,7 @@ export class UsersService {
           include: {
             users: {
               select: {
-                user_id: true,
+                id: true,
                 fullName: true,
                 avatar: true,
               },
@@ -66,19 +65,17 @@ export class UsersService {
   }
 
   async getMyImages(userId: number) {
-    const images = await this.prisma.users.findMany({
-      where: { id: userId },
+    const images = await this.prisma.image.findMany({
+      where: { user_id: userId },
       include: {
         saved_images: {
           select: {
             user_id: true,
-            fullname: true,
-            age: true,
-            avatar: true,
+            image_id: true,
           },
         },
       },
-      orderBy: { id: 'desc' },
+      orderBy: { image_id: 'desc' },
     });
 
     return images;

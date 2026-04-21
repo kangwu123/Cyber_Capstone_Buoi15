@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
+import type { Multer } from 'multer';
 import { extname } from 'path';
 import { ImagesService } from './images.service';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
@@ -94,7 +95,7 @@ export class ImagesController {
   async createImage(
     @CurrentUser('id') userId: number,
     @Body() dto: CreateImageDto,
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile() file: Multer.File,
   ) {
     const image = await this.imagesService.createImage(userId, dto, file);
     return {

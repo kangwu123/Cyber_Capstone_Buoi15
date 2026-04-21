@@ -35,10 +35,9 @@ export class AuthService {
         avatar: dto.avatar ?? null,
       },
       select: {
-        user_id: true,
+        id: true,
         email: true,
         fullName: true,
-        age: true,
         avatar: true,
       },
     });
@@ -51,11 +50,11 @@ export class AuthService {
       where: { email: dto.email },
     });
 
-    if (!user || !(await this.verifyPassword(dto.password, user.mat_khau))) {
+    if (!user || !(await this.verifyPassword(dto.password, user.password || ''))) {
       throw new UnauthorizedException('Email hoặc mật khẩu không đúng');
     }
 
-    const payload = { sub: user.user_id, email: user.email };
+    const payload = { sub: user.id, email: user.email };
 
     return {
       accessToken: this.jwtService.sign(payload),
