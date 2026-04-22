@@ -29,7 +29,7 @@ export default function ImageCard({ image, token, onDelete }: ImageCardProps) {
         {image.description && (
           <p className="image-card__description">{image.description}</p>
         )}
-        <p className="image-card__author">Tác giả: {image.user.username}</p>
+        <p className="image-card__author">Tác giả: {image.user?.fullName}</p>
         <div className="image-card__actions">
           <Link href={`/images/${image.image_id}`} className="detail-link">
             Xem chi tiết

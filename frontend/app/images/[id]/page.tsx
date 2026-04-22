@@ -66,25 +66,27 @@ export default function ImageDetailPage() {
   return (
     <div className="image-detail-page">
       <div className="image-detail">
-        <img
-          src={getImageUrl(image.path)}
-          alt={image.image_name}
-          className="image-detail__img"
-        />
+        {image.path && (
+          <img
+            src={getImageUrl(image.path)}
+            alt={image.image_name}
+            className="image-detail__img"
+          />
+        )}
         <div className="image-detail__info">
           <h1>{image.image_name}</h1>
           {image.description && <p className="description">{image.description}</p>}
           <div className="author">
             <img
               src={
-                image.user.avatar
-                  ? getImageUrl(image.user.avatar)
+                image.user?.avatar
+                  ? getImageUrl(image.user?.avatar)
                   : "/default-avatar.png"
               }
-              alt={image.user.username}
+              alt={image.user?.fullName}
               className="author-avatar"
             />
-            <span>{image.user.username}</span>
+            <span>{image.user?.fullName}</span>
           </div>
           {token && <SaveButton token={token} imageId={imageId} />}
         </div>

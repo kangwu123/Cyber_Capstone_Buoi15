@@ -19,7 +19,7 @@ export interface Image {
   description?: string;
   user: {
     user_id: number;
-    username: string;
+    fullName: string;
     avatar?: string;
   };
 }
@@ -41,7 +41,7 @@ export interface ImagesResponse {
 export interface User {
   user_id: number;
   email: string;
-  username: string;
+  fullName: string;
   age?: number;
   avatar?: string;
 }
@@ -52,7 +52,7 @@ export interface Comment {
   created_at: string;
   user: {
     user_id: number;
-    username: string;
+    fullName: string;
     avatar?: string;
   };
 }
@@ -72,13 +72,13 @@ export interface LoginRequest {
 export interface RegisterRequest {
   email: string;
   password: string;
-  username: string;
+  fullName: string;
   age?: number;
   avatar?: string;
 }
 
 export interface UpdateUserRequest {
-  username?: string;
+  fullName?: string;
   age?: number;
   avatar?: string;
 }
@@ -116,7 +116,7 @@ export interface SaveImageResponse {
   message: string;
   data: {
     saved: boolean;
-    hinh_id?: number;
+    image_id?: number;
   };
 }
 

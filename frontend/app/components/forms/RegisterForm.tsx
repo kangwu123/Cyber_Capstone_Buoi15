@@ -9,7 +9,7 @@ export default function RegisterForm({ onRegisterSuccess }: RegisterFormProps) {
   const [formData, setFormData] = useState<RegisterRequest>({
     email: "",
     password: "",
-    username: "",
+    fullName: "",
     age: undefined,
     avatar: "",
   });
@@ -80,12 +80,12 @@ export default function RegisterForm({ onRegisterSuccess }: RegisterFormProps) {
           </div>
         </div>
         <div className="form-group">
-          <label htmlFor="username">Tên đăng nhập:</label>
+          <label htmlFor="fullName">Tên đầy đủ:</label>
           <input
             type="text"
-            id="username"
-            name="username"
-            value={formData.username}
+            id="fullName"
+            name="fullName"
+            value={formData.fullName}
             onChange={handleChange}
             required
           />

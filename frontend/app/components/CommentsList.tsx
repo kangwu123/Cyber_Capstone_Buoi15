@@ -16,16 +16,16 @@ export default function CommentsList({ comments }: CommentsListProps) {
             <div className="comment-header">
               <img
                 src={
-                  comment.user.avatar
-                    ? getImageUrl(comment.user.avatar)
+                  comment.user?.avatar
+                    ? getImageUrl(comment.user?.avatar)
                     : "/default-avatar.png"
                 }
-                alt={comment.user.username}
+                alt={comment.user?.fullName}
                 className="comment-avatar"
               />
               <div className="comment-info">
                 <span className="comment-author">
-                  {comment.user.username}
+                  {comment.user?.fullName}
                 </span>
                 <span className="comment-date">
                   {new Date(comment.created_at).toLocaleDateString("vi-VN")}
