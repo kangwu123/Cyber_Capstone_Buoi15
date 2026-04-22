@@ -20,16 +20,25 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: url('https://png.pngtree.com/thumb_back/fh260/background/20250208/pngtree-flower-petals-flowers-plant-spring-watercolor-pink-background-image_16932754.jpg')
+    no-repeat center center fixed;
+  background-size: cover;
+  color: #fff; /* Default text color to white for better contrast */
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden; /* Prevent scrollbars from animation */
 }
 
 /* Header */
 .header {
-  background: var(--background);
-  border-bottom: 1px solid #eee;
+  background: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Semi-transparent for glass effect */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .nav {
@@ -45,8 +54,9 @@ body {
 .nav-brand a {
   font-size: 24px;
   font-weight: bold;
-  color: var(--foreground);
+  color: #1d4ed8; /* Blue text for better contrast */
   text-decoration: none;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .nav-links {
@@ -58,27 +68,37 @@ body {
 }
 
 .nav-links a {
-  color: var(--foreground);
+  color: #1d4ed8; /* White text for better contrast */
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 4px;
   transition: background 0.2s;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .nav-links a:hover {
-  background: rgba(0, 123, 255, 0.1);
+  background: rgba(255, 105, 180, 0.2); /* Pinkish hover effect */
 }
 
 /* Auth forms */
 .auth-page,
 .profile-page,
 .create-image-page {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 20px;
-  background: var(--background);
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 40px;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.3
+  ); /* Darker semi-transparent for glass effect */
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
 }
 
 .auth-form,
@@ -92,50 +112,76 @@ body {
 .update-user-form h2,
 .create-image-form h2 {
   text-align: center;
-  margin-bottom: 20px;
-  color: var(--foreground);
+  margin-bottom: 30px;
+  color: #fff;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  position: relative; /* Needed for icon positioning */
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-weight: bold;
-  color: var(--foreground);
+  color: #fff;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
   font-size: 16px;
-  background: var(--background);
-  color: var(--foreground);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #ff69b4; /* Hot pink focus */
+}
+
+/* This container is crucial for positioning the icon */
+.password-input-container {
+  position: relative;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  color: #fff; /* Make icon visible */
 }
 
 .form-group textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 100px;
 }
 
 button[type="submit"] {
-  padding: 12px;
-  background: #007bff;
+  padding: 14px;
+  background: #ff69b4; /* Hot pink */
   color: white;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-size: 18px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.3s;
+  font-weight: bold;
 }
 
 button[type="submit"]:hover:not(:disabled) {
-  background: #0056b3;
+  background: #ff85c1; /* Lighter pink on hover */
 }
 
 button[type="submit"]:disabled {
@@ -144,19 +190,25 @@ button[type="submit"]:disabled {
 }
 
 .error-message {
-  color: #dc3545;
-  margin-bottom: 10px;
+  color: #ff6b6b;
+  margin-bottom: 15px;
   font-weight: bold;
+  text-align: center;
+  background: rgba(255, 107, 107, 0.2);
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .auth-page p {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 25px;
+  color: #fff;
 }
 
 .auth-page a {
-  color: #007bff;
+  color: #ff69b4; /* Hot pink */
   text-decoration: none;
+  font-weight: bold;
 }
 
 .auth-page a:hover {
@@ -545,6 +597,7 @@ button[type="submit"]:disabled {
 .error p {
   font-size: 18px;
   margin-bottom: 10px;
+  color: red;
 }
 
 .error button {

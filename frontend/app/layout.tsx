@@ -31,7 +31,7 @@ export default function RootLayout({
         <header className="header">
           <nav className="nav">
             <div className="nav-brand">
-              <Link href="/">Cyber Gallery</Link>
+              <Link href="/">Printerst Gallery</Link>
             </div>
             <ul className="nav-links">
               <li>
